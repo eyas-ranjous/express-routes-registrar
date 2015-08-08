@@ -77,7 +77,10 @@ module.exports = function() {
 
     return {
         getAll: getAll,
-
+        add: add,
+        get: get,
+        update: update,
+        remove: remove
     };
 };
 ```
