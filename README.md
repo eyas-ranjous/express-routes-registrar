@@ -1,4 +1,4 @@
-#express-routes-registrar
+# express-routes-registrar
 
 [![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
@@ -101,12 +101,12 @@ module.exports {
 
 By following this convention, the package can be used to register the routes by passing the modules.
 
-##Install
+## Install
 ```
 npm install express-routes-registrar
 ```
 
-##Usage 
+## Usage 
 ```javascript
 var app = require('express')(),
     routes = require('./routes'), // routes module
@@ -138,15 +138,15 @@ routesRegistrar.registerRoute('/users/:id', 'GET', function(req, res) {
 ```
 
 
-##Lint
+## Lint
 ```
 grunt lint
 ```
 
-##Test
+## Test
 ```
 grunt test
 ```
 
-##License
+## License
 The MIT License. Full License is [here](https://github.com/eyas-ranjous/express-routes-registrar/blob/master/LICENSE)
