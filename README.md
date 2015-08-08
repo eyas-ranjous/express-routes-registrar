@@ -115,22 +115,22 @@ var app = require('express')(),
     routesRegistrar = require('express-routes-registrar')(app);
 ```
 
-After an instance is created, we can register all the routes
+**.register** registers all the routes and their controllers
 ```javascript
 routesRegistrar.register(routes, controllers);
 ```
 
-You can also register one routes json
+**.registerRoutesJson** registers a routes json file and its controller
 ```javascript
 routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController);
 ```
 
-Or registering the methods of a route
+**.registerRouteMethods** registers the methods of a route with their handlers
 ```javascript
 routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], controller.usersController);
 ```
 
-Or registering on method of a route
+**.registerRoute** register a route method and its handler
 ```javascript
 routesRegistrar.registerRoute('/users/:id', 'GET', function(req, res) {
     // handle /users/:id get
