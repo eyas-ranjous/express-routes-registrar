@@ -37,7 +37,7 @@ module.exports {
 }
 ```
 
-And the same way controllers can be created, each routes json has its controller that has json file name concatenated with 'Controller' word and defines the handlers of the routes methods.
+And the same way controllers can be created, each routes json has its own controller that is named after the json file and concatenated wwith 'Controller' word, it defines the handlers of the routes methods.
 
 /controllers/homeController.js
 ```javascript
@@ -91,7 +91,7 @@ module.exports {
 }
 ```
 
-By using this convention, the package can be used to register the routes by passing the modules.
+By following this convention, the package can be used to register the routes by passing the modules.
 
 ##Install
 ```
