@@ -37,7 +37,7 @@ module.exports {
 }
 ```
 
-And the same way controllers can be created, each routes json has its own controller that is named after the json file and concatenated wwith 'Controller' word, it defines the handlers of the routes methods.
+And the same way controllers can be created, each routes json has its own controller that is named after the json file and concatenated with 'Controller' word, it defines the handlers of the routes methods.
 
 /controllers/homeController.js
 ```javascript
