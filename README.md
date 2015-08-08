@@ -83,6 +83,8 @@ module.exports = {
 ```
 
 And export the controllers as a module
+
+/controllers/index.js
 ```javascript
 // create an instance of each controller
 module.exports {
