@@ -129,7 +129,7 @@ routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], con
 
 or registering on method of a route
 ```javascript
-routesRegistrar.registerRoute('/users/:id', 'GET', function() {
+routesRegistrar.registerRoute('/users/:id', 'GET', function(req, res) {
     // handle /users/:id get
 });
 ```
