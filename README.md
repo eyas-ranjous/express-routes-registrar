@@ -41,7 +41,7 @@ And the same way controllers can be created, each routes json has its own contro
 
 /controllers/homeController.js
 ```javascript
-module.exports = {
+module.exports = function() {
     function index(req, res) {
         // handle route / for GET
     }
@@ -54,7 +54,7 @@ module.exports = {
 
 /controllers/usersController.js
 ```javascript
-module.exports = {
+module.exports = function() {
     function getAll(req, res) {
         // handle route /users for GET
     }
