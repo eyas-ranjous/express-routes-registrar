@@ -1,0 +1,8 @@
+{
+    "/users": {
+        "GET": "index"
+    },
+    "/users/:id": {
+        "GET": "get"
+    }
+}

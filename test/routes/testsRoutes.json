@@ -1,0 +1,11 @@
+{
+    "/tests": {
+        "GET": "getAll",
+        "POST": "add"
+    },
+    "/tests/:t": {
+        "GET": "get",
+        "PUT": "update",
+        "DELETE": "remove"
+    }
+}
