@@ -2,7 +2,7 @@
 
 [![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
-This package works with a convention that separates the routes in json files where routes are the keys that contains all the allowed http method and their handlers function names (which exist in controllers).
+This package works with a convention that separates the routes in json files where keys are the routes and value is an object of all the allowed http methods and their handlers (which exist in controllers).
 
 Example:
 
