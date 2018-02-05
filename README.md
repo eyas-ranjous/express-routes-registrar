@@ -1,6 +1,6 @@
 # express-routes-registrar
 
-[![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar)
+[![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
 ## Install
 ```
@@ -10,8 +10,6 @@ npm install express-routes-registrar
 ## Usage 
 
 This package enables separating the app routes into json files where keys are the routes and value is an object of all the allowed http methods of the route and their handlers. Handlers are encapsulated within controllers (controller per routes file) and each controller has the same resource name of the routes file that it handles. 
-
-Example:
 
 **defining the app routes**
 
@@ -114,7 +112,7 @@ const app             = require('express')(),
       routesRegistrar = require('express-routes-registrar').create(app);
 ```
 
-**.register(routes, controllers)** registers all the routes and their controllers
+**.register(routes, controllers)** registers routes and controllers module
 ```javascript
 routesRegistrar.register(routes, controllers);
 ```
@@ -124,7 +122,7 @@ routesRegistrar.register(routes, controllers);
 routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController);
 ```
 
-**.registerRouteMethods(route, methods, handler)** registers the methods of a route with their handlers
+**.registerRouteMethods(route, methods, handler)** registers a route's methods with their handlers
 ```javascript
 routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], controller.usersController);
 ```
