@@ -90,7 +90,7 @@ class UsersController {
 
 **exporting controllers module**
 
-/controllers/index.js
+*`/controllers/index.js`*
 ```javascript
 // create an instance of each controller
 // can include any factory logic to create controllers
