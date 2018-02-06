@@ -112,22 +112,30 @@ const app             = require('express')(),
       routesRegistrar = require('express-routes-registrar').create(app);
 ```
 
-**.register(routes, controllers)** registers routes and controllers module
+**.register(routes, controllers)** 
+
+registers all routes and controllers module
 ```javascript
 routesRegistrar.register(routes, controllers);
 ```
 
-**.registerRoutesJson(routesJson, controller)** registers a routes json file and its controller
+**.registerRoutesJson(routesJson, controller)** 
+
+registers a routes json file and its controller
 ```javascript
 routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController);
 ```
 
-**.registerRouteMethods(route, methods, handler)** registers a route's methods with their handlers
+**.registerRouteMethods(route, methods, handler)** 
+
+registers a route's methods with their handlers
 ```javascript
 routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], controller.usersController);
 ```
 
-**.registerRoute(route, method, handler)** register a route method and its handler
+**.registerRoute(route, method, handler)** 
+
+register a route method and its handler
 ```javascript
 routesRegistrar.registerRoute('/users/:id', 'GET', (req, res) => {
     // handle /users/:id get
