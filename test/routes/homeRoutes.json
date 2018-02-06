@@ -1,8 +1,5 @@
 {
     "/": {
         "GET": "index"
-    },
-    "/about": {
-        "GET": "about"
     }
 }

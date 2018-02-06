@@ -1,16 +1,27 @@
-module.exports = function() {
+'use srtict';
 
-    function index(req, res) {
-        res.end('usersController index');
+class UsersController {
+
+    getAll(req, res) {
+        res.end('/users GET');
     }
 
-    function get(req, res) {
-        res.end('usersController get');
+    get(req, res) {
+        res.end('/users/:id GET');
     }
 
-    return {
-        index: index,
-        get: get
-    };
+    add(req, res) {
+        res.end('/users POST');
+    }
 
-};
+    update(req, res) {
+        res.end('/users/:id PUT');
+    }
+
+    remove(req, res) {
+        res.end('/users/:id DELETE');
+    }
+
+}
+
+module.exports = UsersController;
