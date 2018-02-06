@@ -1,16 +1,11 @@
-module.exports = function() {
+'use srtict';
 
-    function index(req, res) {
-        res.end('homeController index');
+class HomeController {
+
+    index(req, res) {
+        res.end('/ GET');
     }
 
-    function about(req, res) {
-        res.end('homeController about');
-    }
+}
 
-    return {
-        index: index,
-        about: about
-    };
-
-};
+module.exports = HomeController;
