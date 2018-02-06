@@ -153,5 +153,16 @@ grunt lint
 grunt test
 ```
 
+## Coverage
+```
+grunt coverage
+```
+
+## Build
+All tasks
+```
+grunt build
+```
+
 ## License
 The MIT License. Full License is [here](https://github.com/eyas-ranjous/express-routes-registrar/blob/master/LICENSE)
