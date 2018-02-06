@@ -126,11 +126,12 @@ registers a routes json file and its controller
 routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController);
 ```
 
-**.registerRouteMethods(route, methods, handler)** 
+**.registerRouteMethods(route, methods, controller)** 
 
 registers a route's methods with their handlers
 ```javascript
-routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], controller.usersController);
+let methods = routes.usersRoutes['/users'];
+routesRegistrar.registerRouteMethods('/users', methods, controller.usersController);
 ```
 
 **.registerRoute(route, method, handler)** 
@@ -138,7 +139,7 @@ routesRegistrar.registerRouteMethods('/users', routes.usersRoutes['/users'], con
 register a route method and its handler
 ```javascript
 routesRegistrar.registerRoute('/users/:id', 'GET', (req, res) => {
-    // handle /users/:id get
+    // handle /users/:id GET
 });
 ```
 
