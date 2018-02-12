@@ -2,6 +2,9 @@
 
 [![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
+## Description 
+This package gives an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and their handlers names. Handlers are encapsulated within controllers (controller per routes file).
+
 ## Install
 ```
 npm install express-routes-registrar
@@ -9,9 +12,7 @@ npm install express-routes-registrar
 
 ## Usage 
 
-This package enables separating the app routes into json files where keys are the routes and value is an object of all the allowed http methods of the route and their handlers. Handlers are encapsulated within controllers (controller per routes file) and each controller has the same resource name of the routes file that it handles. 
-
-**defining the app routes**
+**Defining the app routes into json files**
 
 *`/routes/homeRoutes.json`*
 ```
@@ -26,28 +27,28 @@ This package enables separating the app routes into json files where keys are th
 ```
 {
     "/users": {
-        "GET": "getAll",
-        "POST": "add"
+        "GET"   : "getAll",
+        "POST"  : "add"
     },
     "/users/:id": {
-        "GET": "get",
-        "PUT": "update",
+        "GET"   : "get",
+        "PUT"   : "update",
         "DELETE": "remove"
     }
 }
 ```
 
-**exporting routes module**
+**Exporting routes module**
 
 *`/routes/index.js`*
 ```javascript
 module.exports = {
-    homeRoutes: require('./homeRoutes'),
+    homeRoutes : require('./homeRoutes'),
     usersRoutes: require('./usersRoutes')
 }
 ```
 
-**defining controllers**
+**Defining handlers into controllers**
 
 *`/controllers/homeController.js`*
 ```javascript
@@ -58,6 +59,8 @@ class HomeController {
     }
 
 }
+
+module.exports = HomeController;
 ```
 
 *`/controllers/usersController.js`*
@@ -85,10 +88,12 @@ class UsersController {
     }
 
 }
+
+module.exports = UsersController;
 ```
 
 
-**exporting controllers module**
+**Exporting controllers module**
 
 *`/controllers/index.js`*
 ```javascript
@@ -99,16 +104,18 @@ const HomeController  = require('./controllers/homeController'),
       UsersController = require('./controllers/usersController');
 
 module.exports = {
-    homeController: new HomeController(),
+    homeController : new HomeController(),
     usersController: new UsersController()
 }
 ```
 
-**construction**
+**.create(expressApp)**
+
+creates a routes registrar object
 ```javascript
-const app             = require('express')(),
-      routes          = require('./routes'),
+const routes          = require('./routes'),
       controllers     = require('./controllers'),
+      app             = require('express')(),
       routesRegistrar = require('express-routes-registrar').create(app);
 ```
 
