@@ -9,9 +9,9 @@ npm install express-routes-registrar
 
 ## Usage 
 
-This package gives an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and its handlers names. Handlers are encapsulated within controllers (controller per routes file).
+This package gives an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and their handlers names. Handlers are encapsulated within controllers (controller per routes file).
 
-**defining the app routes**
+**Defining the app routes into json files**
 
 *`/routes/homeRoutes.json`*
 ```
@@ -37,7 +37,7 @@ This package gives an MVC structure for a node express app by separating routes 
 }
 ```
 
-**exporting routes module**
+**Exporting routes module**
 
 *`/routes/index.js`*
 ```javascript
@@ -47,7 +47,7 @@ module.exports = {
 }
 ```
 
-**defining controllers**
+**Defining handlers into controllers**
 
 *`/controllers/homeController.js`*
 ```javascript
@@ -92,7 +92,7 @@ module.exports = UsersController;
 ```
 
 
-**exporting controllers module**
+**Exporting controllers module**
 
 *`/controllers/index.js`*
 ```javascript
@@ -108,11 +108,13 @@ module.exports = {
 }
 ```
 
-**construction**
+**.create(expressApp)**
+
+creates a routes registrar object
 ```javascript
-const app             = require('express')(),
-      routes          = require('./routes'),
+const routes          = require('./routes'),
       controllers     = require('./controllers'),
+      app             = require('express')(),
       routesRegistrar = require('express-routes-registrar').create(app);
 ```
 
