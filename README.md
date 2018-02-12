@@ -15,7 +15,7 @@ npm install express-routes-registrar
 **Defining the app routes into json files**
 
 *`/routes/homeRoutes.json`*
-```
+```json
 {
     "/": {
         "GET": "index"
@@ -24,7 +24,7 @@ npm install express-routes-registrar
 ```
 
 *`/routes/usersRoutes.json`*
-```
+```json
 {
     "/users": {
         "GET"   : "getAll",
@@ -121,21 +121,21 @@ const routes          = require('./routes'),
 
 **.register(routes, controllers)** 
 
-registers all routes and controllers module
+registers all routes and controllers
 ```javascript
 routesRegistrar.register(routes, controllers);
 ```
 
 **.registerRoutesJson(routesJson, controller)** 
 
-registers a routes json file and its controller
+registers a routes file and its controller
 ```javascript
 routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController);
 ```
 
 **.registerRouteMethods(route, methods, controller)** 
 
-registers a route's methods with their handlers
+registers a route's methods and their controller
 ```javascript
 let methods = routes.usersRoutes['/users'];
 routesRegistrar.registerRouteMethods('/users', methods, controller.usersController);
