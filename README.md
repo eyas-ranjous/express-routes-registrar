@@ -9,7 +9,7 @@ npm install express-routes-registrar
 
 ## Usage 
 
-This package enables separating the app routes into json files where keys are the routes and value is an object of all the allowed http methods of the route and their handlers. Handlers are encapsulated within controllers (controller per routes file) and each controller has the same resource name of the routes file that it handles. 
+This package gives an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and its handler's name. Handlers are encapsulated within controllers (controller per routes file).
 
 **defining the app routes**
 
@@ -26,12 +26,12 @@ This package enables separating the app routes into json files where keys are th
 ```
 {
     "/users": {
-        "GET": "getAll",
-        "POST": "add"
+        "GET"   : "getAll",
+        "POST"  : "add"
     },
     "/users/:id": {
-        "GET": "get",
-        "PUT": "update",
+        "GET"   : "get",
+        "PUT"   : "update",
         "DELETE": "remove"
     }
 }
@@ -42,7 +42,7 @@ This package enables separating the app routes into json files where keys are th
 *`/routes/index.js`*
 ```javascript
 module.exports = {
-    homeRoutes: require('./homeRoutes'),
+    homeRoutes : require('./homeRoutes'),
     usersRoutes: require('./usersRoutes')
 }
 ```
@@ -58,6 +58,8 @@ class HomeController {
     }
 
 }
+
+module.exports = HomeController;
 ```
 
 *`/controllers/usersController.js`*
@@ -85,6 +87,8 @@ class UsersController {
     }
 
 }
+
+module.exports = UsersController;
 ```
 
 
@@ -99,7 +103,7 @@ const HomeController  = require('./controllers/homeController'),
       UsersController = require('./controllers/usersController');
 
 module.exports = {
-    homeController: new HomeController(),
+    homeController : new HomeController(),
     usersController: new UsersController()
 }
 ```
