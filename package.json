@@ -1,7 +1,7 @@
 {
   "name": "express-routes-registrar",
   "version": "1.0.0",
-  "description": "register express app routes and handlers dynamically from routes json files",
+  "description": "register express app routes dynamically from controllers and routes json files",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -14,9 +14,11 @@
     "url": "git+https://github.com/eyas-ranjous/express-routes-registrar.git"
   },
   "keywords": [
-    "express",
-    "routes",
-    "handlers"
+    "node mvc",
+    "node mvc structure",
+    "express mvc",
+    "express controller"
+    "express routes",
   ],
   "author": "Eyas Ranjous <eyas.ranjous@gmail.com>",
   "license": "MIT",
