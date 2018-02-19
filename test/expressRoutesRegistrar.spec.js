@@ -62,7 +62,7 @@ describe('expressRoutesRegistrar tests', () => {
         it('should throw an error when handler does not exist in the controller', () => {
             expect(() => expressRoutesRegistrar.registerRouteMethods('/users', 
                 {GET: 'getAllContent'}, controllers.usersController))
-                .to.throw('handler "getAllContent" not found in /users controller');
+                .to.throw('missing "getAllContent" in UsersController');
         });
     });
 
