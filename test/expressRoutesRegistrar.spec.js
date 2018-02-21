@@ -21,7 +21,7 @@ describe('expressRoutesRegistrar tests', () => {
   let expressRoutesRegistrar = new ExpressRoutesRegistrar(app);
 
   before((done) => {
-    server.listen(PORT, (err) => {
+    server.listen(PORT, () => {
       done();
     });
   });
