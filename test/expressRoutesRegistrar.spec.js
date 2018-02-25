@@ -64,7 +64,7 @@ describe('expressRoutesRegistrar tests', () => {
         '/users', 
         { GET: 'getAllContent' }, 
         controllers.usersController)).to
-        .throw('missing "getAllContent" in UsersController');
+        .throw('missing "getAllContent" handler in UsersController');
     });
   });
 
