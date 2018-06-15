@@ -54,7 +54,7 @@ module.exports = {
 ```javascript
 class HomeController {
   index() {
-      // handle / for GET
+    // handle / for GET
   }
 }
 
@@ -146,7 +146,7 @@ routesRegistrar.registerRouteMethods(
 register a route method and its handler
 ```javascript
 routesRegistrar.registerRoute('/users/:id', 'GET', (req, res) => {
-    // handle /users/:id GET
+  // handle /users/:id GET
 });
 ```
 
