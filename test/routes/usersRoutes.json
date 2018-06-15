@@ -1,11 +1,11 @@
 {
-    "/users": {
-        "GET": "getAll",
-        "POST": "add"
-    },
-    "/users/:id": {
-        "GET": "get",
-        "PUT": "update",
-        "DELETE": "remove"
-    }
+  "/users": {
+    "GET": "getAll",
+    "POST": "add"
+  },
+  "/users/:id": {
+    "GET": "get",
+    "PUT": "update",
+    "DELETE": "remove"
+  }
 }
