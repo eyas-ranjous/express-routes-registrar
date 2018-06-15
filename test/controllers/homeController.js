@@ -1,11 +1,7 @@
-'use srtict';
-
 class HomeController {
-
-    index(req, res) {
-        res.end('/ GET');
-    }
-
+  index(req, res) {
+    res.end('/ GET');
+  }
 }
 
 module.exports = HomeController;

@@ -3,7 +3,7 @@
 [![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
 ## Description 
-This package gives an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and their handlers names. Handlers are encapsulated within controllers (controller per routes file).
+Adds an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and their handlers names. Handlers are encapsulated within controllers (controller per routes file).
 
 ## Install
 ```
@@ -17,24 +17,24 @@ npm install express-routes-registrar
 *`/routes/homeRoutes.json`*
 ```json
 {
-    "/": {
-        "GET": "index"
-    }
+  "/": {
+    "GET": "index"
+  }
 }
 ```
 
 *`/routes/usersRoutes.json`*
 ```json
 {
-    "/users": {
-        "GET"   : "getAll",
-        "POST"  : "add"
-    },
-    "/users/:id": {
-        "GET"   : "get",
-        "PUT"   : "update",
-        "DELETE": "remove"
-    }
+  "/users": {
+    "GET": "getAll",
+    "POST": "add"
+  },
+  "/users/:id": {
+    "GET": "get",
+    "PUT": "update",
+    "DELETE": "remove"
+  }
 }
 ```
 
@@ -43,8 +43,8 @@ npm install express-routes-registrar
 *`/routes/index.js`*
 ```javascript
 module.exports = {
-    homeRoutes : require('./homeRoutes'),
-    usersRoutes: require('./usersRoutes')
+  homeRoutes : require('./homeRoutes'),
+  usersRoutes: require('./usersRoutes')
 }
 ```
 
@@ -53,11 +53,9 @@ module.exports = {
 *`/controllers/homeController.js`*
 ```javascript
 class HomeController {
-
-    index() {
-        // handle / for GET
-    }
-
+  index() {
+      // handle / for GET
+  }
 }
 
 module.exports = HomeController;
@@ -66,27 +64,25 @@ module.exports = HomeController;
 *`/controllers/usersController.js`*
 ```javascript
 class UsersController {
+  getAll(req, res) {
+    // handle /users GET
+  }
 
-    getAll(req, res) {
-        // handle /users GET
-    }
+  add(req, res) {
+    // handle /users POST
+  }
 
-    add(req, res) {
-        // handle /users POST
-    }
+  get(req, res) {
+    // handle /users/:id GET
+  }
 
-    get(req, res) {
-        // handle /users/:id GET
-    }
+  update(req, res) {
+    // handle /users/:id PUT
+  }
 
-    update(req, res) {
-        // handle /users/:id PUT
-    }
-
-    remove(req, res) {
-        // handle /users/:id DELETE
-    }
-
+  remove(req, res) {
+    // handle /users/:id DELETE
+  }
 }
 
 module.exports = UsersController;
@@ -100,12 +96,12 @@ module.exports = UsersController;
 // create an instance of each controller
 // can include any factory logic to create controllers
 
-const HomeController  = require('./controllers/homeController'),
-      UsersController = require('./controllers/usersController');
+const HomeController  = require('./controllers/homeController');
+const UsersController = require('./controllers/usersController');
 
 module.exports = {
-    homeController : new HomeController(),
-    usersController: new UsersController()
+  homeController : new HomeController(),
+  usersController: new UsersController()
 }
 ```
 
@@ -113,10 +109,10 @@ module.exports = {
 
 creates a routes registrar object
 ```javascript
-const routes          = require('./routes'),
-      controllers     = require('./controllers'),
-      app             = require('express')(),
-      routesRegistrar = require('express-routes-registrar').create(app);
+const routes = require('./routes');
+const controllers = require('./controllers');
+const app = require('express')();
+const routesRegistrar = require('express-routes-registrar').create(app);
 ```
 
 **.register(routes, controllers)** 
@@ -138,7 +134,11 @@ routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController)
 registers a route's methods and their controller
 ```javascript
 let methods = routes.usersRoutes['/users'];
-routesRegistrar.registerRouteMethods('/users', methods, controller.usersController);
+routesRegistrar.registerRouteMethods(
+  '/users',
+  methods,
+  controller.usersController
+);
 ```
 
 **.registerRoute(route, method, handler)** 
