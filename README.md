@@ -27,12 +27,12 @@ npm install express-routes-registrar
 ```json
 {
   "/users": {
-    "GET"   : "getAll",
-    "POST"  : "add"
+    "GET": "getAll",
+    "POST": "add"
   },
   "/users/:id": {
-    "GET"   : "get",
-    "PUT"   : "update",
+    "GET": "get",
+    "PUT": "update",
     "DELETE": "remove"
   }
 }
