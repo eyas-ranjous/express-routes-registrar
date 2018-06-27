@@ -3,7 +3,7 @@
 [![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
 ## Description 
-Adds an MVC structure for a node express app by separating routes into json files and handlers into controllers. Each routes file defines the routes to a resource in the app where keys are the allowed routes to this resource and values are the allowed http methods of each route and their handlers names. Handlers are encapsulated within controllers (controller per routes file).
+Adds an MVC structure to a node express app by separating routes into json files and handlers into controllers. Routes are defined as json files that hold the methods and handler names of each route while Handlers are defined in controllers.
 
 ## Install
 ```
@@ -105,14 +105,14 @@ module.exports = {
 }
 ```
 
-**.create(expressApp)**
+**create the registrar**
 
 creates a routes registrar object
 ```javascript
 const routes = require('./routes');
 const controllers = require('./controllers');
 const app = require('express')();
-const routesRegistrar = require('express-routes-registrar').create(app);
+const routesRegistrar = require('express-routes-registrar')(app);
 ```
 
 **.register(routes, controllers)** 
@@ -133,7 +133,7 @@ routesRegistrar.registerRoutesJson(routes.homeRoutes, controller.homeController)
 
 registers a route's methods and their controller
 ```javascript
-let methods = routes.usersRoutes['/users'];
+const methods = routes.usersRoutes['/users'];
 routesRegistrar.registerRouteMethods(
   '/users',
   methods,
