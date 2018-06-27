@@ -1,7 +1,7 @@
 module.exports = (grunt) => {
   grunt.initConfig({
     eslint: {
-      src: ['./lib/**/*.js', './test/**/*.spec.js', './*.js']
+      src: ['./*.js', './test/**/*.spec.js']
     },
     mochaTest: {
       files: ['./test/*.spec.js']

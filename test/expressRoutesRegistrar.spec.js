@@ -4,7 +4,7 @@ const express = require('express');
 const http = require('http');
 const routes = require('./routes');
 const controllers = require('./controllers');
-const expressRoutesRegistrar = require('../lib/expressRoutesRegistrar');
+const expressRoutesRegistrar = require('../index');
 
 const { expect } = chai;
 
