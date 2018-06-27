@@ -4,7 +4,7 @@ const express = require('express');
 const http = require('http');
 const routes = require('./routes');
 const controllers = require('./controllers');
-const ExpressRoutesRegistrar = require('../lib/expressRoutesRegistrar');
+const expressRoutesRegistrar = require('../lib/expressRoutesRegistrar');
 
 const { expect } = chai;
 
@@ -15,14 +15,14 @@ describe('expressRoutesRegistrar tests', () => {
   const URL = `http://localhost:${PORT}`;
   const app = express();
   const server = http.createServer(app);
-  const expressRoutesRegistrar = new ExpressRoutesRegistrar(app);
+  const registrar = expressRoutesRegistrar(app);
 
   before(done => server.listen(PORT, () => done()));
   after(done => server.close(() => done()));
 
   describe('.registerRoute(route, method, handler)', () => {
     it('should register a single route method and handler', () => {
-      expressRoutesRegistrar.registerRoute(
+      registrar.registerRoute(
         '/',
         'GET',
         (req, res) => res.end('/ GET')
@@ -34,7 +34,7 @@ describe('expressRoutesRegistrar tests', () => {
 
   describe('.registerRouteMethods(route, methods, controller)', () => {
     it('should register all methods of a route', () => {
-      expressRoutesRegistrar.registerRouteMethods(
+      registrar.registerRouteMethods(
         '/users',
         routes.usersRoutes['/users'],
         controllers.usersController
@@ -48,7 +48,7 @@ describe('expressRoutesRegistrar tests', () => {
     });
 
     it('should throw an error when handler not exist in controller', () => {
-      expect(() => expressRoutesRegistrar.registerRouteMethods(
+      expect(() => registrar.registerRouteMethods(
         '/users',
         { GET: 'getAllContent' },
         controllers.usersController
@@ -58,7 +58,7 @@ describe('expressRoutesRegistrar tests', () => {
 
   describe('.registerRoutesJson(routesJson, controller)', () => {
     it('should register routes json file', () => {
-      expressRoutesRegistrar.registerRoutesJson(
+      registrar.registerRoutesJson(
         routes.usersRoutes,
         controllers.usersController
       );
@@ -77,7 +77,7 @@ describe('expressRoutesRegistrar tests', () => {
 
   describe('.register(route, method, handler)', () => {
     it('should register routes module', () => {
-      expressRoutesRegistrar.register(routes, controllers);
+      registrar.register(routes, controllers);
       return chai.request(URL).get('/users/123')
         .then((res) => {
           expect(res.text).to.equal('/users/:id GET');
