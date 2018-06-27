@@ -1,5 +1,1 @@
-const ExpressRoutesRegistrar = require('./lib/expressRoutesRegistrar');
-
-module.exports = {
-  create: app => new ExpressRoutesRegistrar(app)
-};
+module.exports = require('./lib/expressRoutesRegistrar');
