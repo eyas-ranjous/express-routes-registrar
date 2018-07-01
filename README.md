@@ -150,23 +150,7 @@ routesRegistrar.registerRoute('/users/:id', 'GET', (req, res) => {
 });
 ```
 
-## Lint
-```
-grunt lint
-```
-
-## Test
-```
-grunt test
-```
-
-## Coverage
-```
-grunt coverage
-```
-
 ## Build
-All tasks
 ```
 grunt build
 ```
