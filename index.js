@@ -1,24 +1,13 @@
 /**
  * express-routes-registrar
- * @copyright 2018 Eyas Ranjous <eyas.ranjous@gmail.com>
+ * @copyright 2018 Eyas Ranjous <https://github.com/eyas-ranjous>
  * @license MIT
  */
 
 module.exports = (app) => {
-  /**
-   * @param {string} route
-   * @param {string} method
-   * @param {function} handler
-   */
   const registerRoute = (route, method, handler) =>
     app[method.toLowerCase()](route, handler);
 
-  /**
-   * @param {string} route
-   * @param {object} methods
-   * @param {Controller} controller
-   * @throws {Error} - when handler not found in controller
-   */
   const registerRouteMethods = (route, methods, controller) => {
     Object.keys(methods).forEach((method) => {
       const handlerName = methods[method];
@@ -33,20 +22,12 @@ module.exports = (app) => {
     });
   };
 
-  /**
-   * @param {object} routesJson
-   * @param {Controller} controller
-   */
   const registerRoutesJson = (routesJson, controller) => {
     Object.keys(routesJson).forEach((route) => {
       registerRouteMethods(route, routesJson[route], controller);
     });
   };
 
-  /**
-   * @param {object} routes
-   * @param {object} controller
-   */
   const register = (routes, controllers) => {
     Object.keys(routes).forEach((route) => {
       const controllerName = route.replace('Routes', 'Controller');
