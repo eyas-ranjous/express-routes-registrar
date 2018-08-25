@@ -5,8 +5,9 @@
  */
 
 module.exports = (app) => {
-  const registerRoute = (route, method, handler) =>
-    app[method.toLowerCase()](route, handler);
+  const registerRoute = (route, method, handler) => (
+    app[method.toLowerCase()](route, handler)
+  );
 
   const registerRouteMethods = (route, methods, controller) => {
     Object.keys(methods).forEach((method) => {
@@ -16,16 +17,17 @@ module.exports = (app) => {
         registerRoute(route, method, handler.bind(controller));
       } else {
         const controllerName = controller.constructor.name;
-        const msg = `missing "${handlerName}" handler in ${controllerName}`;
-        throw new Error(msg);
+        throw new Error(
+          `missing "${handlerName}" handler in ${controllerName}`
+        );
       }
     });
   };
 
   const registerRoutesJson = (routesJson, controller) => {
-    Object.keys(routesJson).forEach((route) => {
-      registerRouteMethods(route, routesJson[route], controller);
-    });
+    Object.keys(routesJson).forEach(
+      route => (registerRouteMethods(route, routesJson[route], controller))
+    );
   };
 
   const register = (routes, controllers) => {
