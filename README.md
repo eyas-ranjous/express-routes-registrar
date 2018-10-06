@@ -1,6 +1,6 @@
 # express-routes-registrar
 
-[![build:?](https://travis-ci.org/eyas-ranjous/express-routes-registrar.svg?branch=master)](https://travis-ci.org/eyas-ranjous/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
+[![build:?](https://travis-ci.org/js-shelf/express-routes-registrar.svg?branch=master)](https://travis-ci.org/js-shelf/express-routes-registrar) [![npm](https://img.shields.io/npm/v/express-routes-registrar.svg)](https://www.npmjs.com/package/express-routes-registrar) [![npm](https://img.shields.io/npm/dm/express-routes-registrar.svg)](https://www.npmjs.com/packages/express-routes-registrar) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/express-routes-registrar)
 
 ## Description 
 Adds an MVC structure to a node express app by separating routes into json files and handlers into controllers. Routes are defined as json files that hold the methods and handler names of each route while Handlers are defined in controllers.
@@ -156,4 +156,4 @@ grunt build
 ```
 
 ## License
-The MIT License. Full License is [here](https://github.com/eyas-ranjous/express-routes-registrar/blob/master/LICENSE)
+The MIT License. Full License is [here](https://github.com/js-shelf/express-routes-registrar/blob/master/LICENSE)
