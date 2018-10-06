@@ -11,14 +11,14 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('expressRoutesRegistrar tests', () => {
-  const PORT = 3000;
+  const PORT = 3031;
   const URL = `http://localhost:${PORT}`;
   const app = express();
   const server = http.createServer(app);
   const registrar = expressRoutesRegistrar(app);
 
-  before(done => server.listen(PORT, () => done()));
-  after(done => server.close(() => done()));
+  before(done => server.listen(PORT, done));
+  after(done => server.close(done));
 
   describe('.registerRoute(route, method, handler)', () => {
     it('should register a single route method and handler', () => {
@@ -27,8 +27,10 @@ describe('expressRoutesRegistrar tests', () => {
         'GET',
         (req, res) => res.end('/ GET')
       );
-      return chai.request(URL).get('/')
-        .then(res => expect(res.text).to.equal('/ GET'));
+      return chai
+        .request(URL)
+        .get('/')
+        .then(({ text }) => expect(text).to.equal('/ GET'));
     });
   });
 
@@ -39,12 +41,14 @@ describe('expressRoutesRegistrar tests', () => {
         routes.usersRoutes['/users'],
         controllers.usersController
       );
-      return chai.request(URL).get('/users')
-        .then((res) => {
-          expect(res.text).to.equal('/users GET');
+      return chai
+        .request(URL)
+        .get('/users')
+        .then(({ text }) => {
+          expect(text).to.equal('/users GET');
           return chai.request(URL).post('/users');
         })
-        .then(res => expect(res.text).to.equal('/users POST'));
+        .then(({ text }) => expect(text).to.equal('/users POST'));
     });
 
     it('should throw an error when handler not exist in controller', () => {
@@ -52,7 +56,9 @@ describe('expressRoutesRegistrar tests', () => {
         '/users',
         { GET: 'getAllContent' },
         controllers.usersController
-      )).to.throw('missing "getAllContent" handler in UsersController');
+      )).to.throw(
+        'missing "getAllContent" handler in UsersController'
+      );
     });
   });
 
@@ -62,16 +68,18 @@ describe('expressRoutesRegistrar tests', () => {
         routes.usersRoutes,
         controllers.usersController
       );
-      return chai.request(URL).get('/users/123')
-        .then((res) => {
-          expect(res.text).to.equal('/users/:id GET');
+      return chai
+        .request(URL)
+        .get('/users/123')
+        .then(({ text }) => {
+          expect(text).to.equal('/users/:id GET');
           return chai.request(URL).put('/users/123');
         })
-        .then((res) => {
-          expect(res.text).to.equal('/users/:id PUT');
+        .then(({ text }) => {
+          expect(text).to.equal('/users/:id PUT');
           return chai.request(URL).delete('/users/123');
         })
-        .then(res => expect(res.text).to.equal('/users/:id DELETE'));
+        .then(({ text }) => expect(text).to.equal('/users/:id DELETE'));
     });
   });
 
@@ -79,11 +87,11 @@ describe('expressRoutesRegistrar tests', () => {
     it('should register routes module', () => {
       registrar.register(routes, controllers);
       return chai.request(URL).get('/users/123')
-        .then((res) => {
-          expect(res.text).to.equal('/users/:id GET');
+        .then(({ text }) => {
+          expect(text).to.equal('/users/:id GET');
           return chai.request(URL).get('/');
         })
-        .then(res => expect(res.text).to.equal('/ GET'));
+        .then(({ text }) => expect(text).to.equal('/ GET'));
     });
   });
 });
