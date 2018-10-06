@@ -1,6 +1,6 @@
 {
   "name": "express-routes-registrar",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "register express app routes dynamically from controllers and routes json files",
   "main": "index.js",
   "directories": {
